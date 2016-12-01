@@ -4,28 +4,44 @@
 <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js></script>
 <script>
 function setup(){
-	int canvasSize=500;
-	createCanvas(canvasSize,canvasSize);
-	int posx=0;
-	int posy=0;
-	int extSize=10;
+	CANVAS_WIDTH=500;
+	CANVAS_HEIGHT=500;
+	SPEED=10;
+	createCanvas(CANVAS_WIDTH,CANVAS_HEIGHT);
 	fill(0);
+	Box box
+	box.posx=10;
+	box.posy=10;
 }
 function draw(){
 	background(255);
-	ellipse(posx,posy,rectSize,rectSize);
+	rect(box.posx,box.posy,box.WIGTH,box.HEGHT);
 }
 function keyPressed(){
-	if(keyCode==LEFT_ARROW){
-		posx=(posx+rectSize)%canvasSize;
-	}
-	if(keyCode==RIGHT_ARROW){
-		posx=(posx-rectSize+canvasSize)%canvasSize;
-	}
 	if(keyCode==UP_ARROW){
+		box.move(SPEED,0);
 	}
 	if(keyCode==DOWN_ARROW){
+		box.move(-SPEED,0);
 	}
+	}
+	if(keyCode==LEFT_ARROW){
+		box.move(0,SPEED);
+	}
+	if(keyCode==RGHIT_ARROW){
+		box.move(0,-SPEED);
+	}
+}
+class Box{
+	WIGTH=50;
+	HEGHT=50;
+	posx;
+	posy;
+	function move(x,y){
+		posx+=(posx+x+CANVAS_WIDTH)%CANVAS_WIDTH;
+		posy+=(posx+x+CANVAS_HEIGHT)%CANVAS_HEIGHT;
+	}
+}
 </script>
 </head>
 <body>
