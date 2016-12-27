@@ -10,11 +10,11 @@ function setup(){
 	TILE_HEIGHT=20;
 	TILE_SIZE=20;
 	field=new Array((TILE_WIDTH+2)*(TILE_HEIGHT+2));//周り余分にとる
-	for(var i=0; i<TILE_WIDTH+2,i++){
+	for(var i=0; i<TILE_WIDTH+2;i++){
 		field[i+0*TILE_WIDTH]=1;
-		field[i+(TILE_HEIGHT+1)*TILE_WIDTH)]=1;
+		field[i+(TILE_HEIGHT+1)*TILE_WIDTH]=1;
 	}
-	for(i=0;i<TILE_HEIGHT,i+){
+	for(i=0;i<TILE_HEIGHT;i++){
 		field[0+i*TILE_HEIGHT]=1;
 		field[TILE_WIDTH+i*TILE_HEIGHT]=1;
 	}
@@ -61,7 +61,6 @@ class Boxcontrol{
 		this.y=y;
 	}
 	move(dx,dy){
-		if(
 		this.x+=dx;
 		this.y+=dy;
 		this.x=Math.min(this.x,TILE_WIDTH-1);
