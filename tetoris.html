@@ -21,7 +21,8 @@ function setup(){
 		field[0+i*(TILE_WIDTH+2)]=1;
 		field[TILE_WIDTH+1+i*(TILE_WIDTH+2)]=1;
 	}
-	createCanvas(CANVAS_WIDTH,CANVAS_HEIGHT);
+	canvas=createCanvas(CANVAS_WIDTH,CANVAS_HEIGHT);
+	canvas.parent("canvas");//canvasのid指定
 	frameRate(30);
 	pl = new Boxcontrol(3,1);
 }
@@ -90,5 +91,6 @@ class Boxcontrol{
 </script>
 </head>
 <body>
+	<p id="canvas" style="text-align:center;"></p>
 </body>
 </html>
