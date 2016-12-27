@@ -2,8 +2,12 @@
 ##開発環境
 * Javascript
   * p5.js  
-    src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js
-    
+    src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js  
+ 
+###簡易実行用
+GitHub & BitBucket HTML Preview  
+http://htmlpreview.github.io/?https://github.com/tokagenoshippo/tetoris/blob/master/tetoris.html
+
 ##用語
 * テトリミノ
   * 上から降ってくる複数の小さい正方形からできたブロック
