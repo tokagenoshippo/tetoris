@@ -22,6 +22,11 @@ function setup(){
 		field[0+i*(TILE_WIDTH+2)]=1;
 		field[TILE_WIDTH+1+i*(TILE_WIDTH+2)]=1;
 	}
+	//DEBUG
+	for(i=1;i<TILE_WIDTH;i++){
+		field[(TILE_WIDTH+2)*20+i]=1;
+	}
+	//DEBUG
 	canvas=createCanvas(CANVAS_WIDTH,CANVAS_HEIGHT);
 	canvas.parent("canvas");//canvasのid指定
 	frameRate(30);
@@ -35,6 +40,11 @@ function draw(){
 		else {
 			frame_tmp=frameCount%30;
 			field[(TILE_WIDTH+2)*pl.y+pl.x]=1;
+			for(var y=1;y<=TILE_HEIGHT;y++){
+				if(checkdelete(y)){
+					falltile(y);
+				}
+			}
 			pl = new Boxcontrol(3,1);
 		}
 	}
@@ -81,23 +91,32 @@ function keyPressed(){
 		if(checkmove(0,1)){
 			pl.move(0,1);
 		}
-		else{
-			frame_tmp=frameCount%30;
-			field[(TILE_WIDTH+2)*pl.y+pl.x]=1;
-			pl = new Boxcontrol(3,1);
-		}
 		break;
 	}
 }
 function checkmove(dx,dy){
-	var bool;
-	if(field[(TILE_WIDTH+2)*(pl.y+dy)+pl.x+dx]>0){
-		bool=false;
+	if(field[(TILE_WIDTH+2)*(pl.y+dy)+pl.x+dx]==1){
+		return false;
 	}
-	else if(field[(TILE_WIDTH+2)*(pl.y+dy)+pl.x+dx]==0){
-		bool=true;
+	return true;
+}
+function checkdelete(y){
+	for(var x=1;x<=TILE_WIDTH;x++){
+		if(field[(TILE_WIDTH+2)*y+x]==0){
+			return false;
+		}
 	}
-	return bool;
+	return true;
+}
+function falltile(startY){
+	for(var y=startY;y>1;y--){
+		for(var x=1; x<=TILE_WIDTH;x++){
+			field[(TILE_WIDTH+2)*y+x]=field[(TILE_WIDTH+2)*(y-1)+x];
+		}
+	}
+	for(var x=1; x<=TILE_WIDTH;x++){
+		field[(TILE_WIDTH+2)*1+x]=0;
+	}
 }
 class Boxcontrol{
 	constructor(x,y){
