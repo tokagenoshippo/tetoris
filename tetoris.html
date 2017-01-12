@@ -42,7 +42,12 @@ function keyPressed(){
 		pl.move(1,0);
 		break;
 	case UP_ARROW:
-		pl.move(0,-1);
+		for(var i=pl.y;i<TILE_HEIGHT;i++){
+			if(!f.hasSpace(0,i)){
+				pl.move(0,i-1);
+				break;
+			}
+		}
 		break;
 	case DOWN_ARROW:
 		pl.move(0,1);
