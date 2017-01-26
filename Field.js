@@ -21,9 +21,15 @@ class Field{
 		}
 		//DEBUG
 	}
-	hasSpace(dx,dy){
-		if(this.get(pl.x+dx,pl.y+dy)==1){
-			return false;
+	hasSpace(dxyarray){
+		console.log(dxyarray.length);
+		for(var i=0;i<dxyarray.length;i+=2){
+			console.log("hasspaceCount "+i);
+			console.log(dxyarray[i]+","+dxyarray[i+1]);
+			if(this.get(pl.x+dxyarray[i],pl.y+dxyarray[i+1])==1){
+				console.log("hasspace =false");
+				return false;
+			}
 		}
 		return true;
 	}

@@ -4,6 +4,7 @@
 <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js></script>
 <script src=Field.js></script>
 <script src=Tetorimino.js></script>
+<script src=Mino_cube.js></script>
 <script>
 function setup(){
 	CANVAS_WIDTH=500;
@@ -43,7 +44,8 @@ function keyPressed(){
 		break;
 	case UP_ARROW:
 		for(var i=pl.y;i<TILE_HEIGHT;i++){
-			if(!f.hasSpace(0,i)){
+			pl.setlookPoint(0,i);
+			if(!f.hasSpace(pl.lookPointArray)){
 				pl.move(0,i-1);
 				break;
 			}
